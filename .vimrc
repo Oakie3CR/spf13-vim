@@ -65,19 +65,15 @@
 
     " General
         if count(g:spf13_bundle_groups, 'general')
-            Bundle 'scrooloose/nerdtree'
             Bundle 'altercation/vim-colors-solarized'
-            Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             Bundle 'AutoClose'
             Bundle 'kien/ctrlp.vim'
-            Bundle 'vim-scripts/sessionman.vim'
+            "Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
             Bundle 'Lokaltog/vim-powerline'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'godlygeek/csapprox'
-            Bundle 'jistr/vim-nerdtree-tabs'
-            Bundle 'flazz/vim-colorschemes'
             Bundle 'corntrace/bufexplorer'
         endif
 
@@ -93,6 +89,7 @@
             endif
 
             Bundle 'tpope/vim-fugitive'
+            Bundle 'tpope/vim-endwise'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'godlygeek/tabular'
             if executable('ctags')
@@ -145,23 +142,20 @@
 
 " General {
     set background=dark         " Assume a dark background
-    if !has('gui')
-        "set term=$TERM          " Make arrow and other keys work
-    endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
-    set mouse=a                 " automatically enable mouse usage
     scriptencoding utf-8
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     " always switch to the current file directory.
 
     " set autowrite                  " automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
-    set virtualedit=onemore         " allow for cursor beyond last character
+    "set virtualedit=onemore         " allow for cursor beyond last character
     set history=1000                " Store a ton of history (default is 20)
     set spell                       " spell checking on
     set hidden                      " allow buffer switching without saving
+    set encoding=utf-8
 
     " Setting up the directories {
         set backup                      " backups are nice ...
@@ -236,7 +230,7 @@
     set expandtab                   " tabs are spaces, not tabs
     set tabstop=4                   " an indentation every four columns
     set softtabstop=4               " let backspace delete indent
-    "set matchpairs+=<:>                " match, to be used with %
+    set matchpairs+=<:>                " match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
@@ -262,12 +256,6 @@
     nnoremap j gj
     nnoremap k gk
 
-    " The following two lines conflict with moving to top and bottom of the
-    " screen
-    " If you prefer that functionality, comment them out.
-    map <S-H> gT
-    map <S-L> gt
-
     " Stupid shift key fixes
     cmap W w
     cmap WQ wq
@@ -277,18 +265,6 @@
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
-
-    """ Code folding options
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
 
     "clearing highlighted search
     nmap <silent> <leader>/ :nohlsearch<CR>
@@ -478,7 +454,7 @@
         let g:neocomplcache_enable_smart_case = 1
         let g:neocomplcache_enable_underbar_completion = 1
         let g:neocomplcache_min_syntax_length = 3
-        let g:neocomplcache_enable_auto_delimiter = 1
+        "let g:neocomplcache_enable_auto_delimiter = 1
 
         " AutoComplPop like behavior.
         let g:neocomplcache_enable_auto_select = 0
@@ -501,7 +477,11 @@
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
         " <C-h>, <BS>: close popup and delete backword char.
-        inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        "This is the default recommended smart close popup, however it doesn't
+        "seem to work with endwise.
+        "inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <silent><CR> <C-R>=neocomplcache#smart_close_popup()<CR><CR>
+        "
         inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
         inoremap <expr><C-y>  neocomplcache#close_popup()
         inoremap <expr><C-e>  neocomplcache#cancel_popup()
@@ -536,9 +516,9 @@
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-        set guioptions-=T           " remove the toolbar
+        "set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
-        set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+        set guifont=Inconsolata\ Medium\ 12,Consolas:h10
         if has('gui_macvim')
             set transparency=5          " Make the window slightly transparent
         endif
