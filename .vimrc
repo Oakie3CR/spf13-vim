@@ -69,7 +69,7 @@
             Bundle 'tpope/vim-surround'
             Bundle 'AutoClose'
             Bundle 'kien/ctrlp.vim'
-            "Bundle 'vim-scripts/sessionman.vim'
+            Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
             Bundle 'Lokaltog/vim-powerline'
             Bundle 'Lokaltog/vim-easymotion'
@@ -145,7 +145,7 @@
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
     scriptencoding utf-8
-    "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     " always switch to the current file directory.
 
     " set autowrite                  " automatically write a file when leaving a modified buffer
@@ -204,7 +204,7 @@
 
     set backspace=indent,eol,start  " backspace for dummies
     set linespace=0                 " No extra spaces between rows
-    set nu                          " Line numbers on
+    set nonu                          " Line numbers on
     set showmatch                   " show matching brackets/parenthesis
     set incsearch                   " find as you type search
     set hlsearch                    " highlight search terms
@@ -234,7 +234,7 @@
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
-    autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+    "autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " }
 
 " Key (re)Mappings {
@@ -347,8 +347,8 @@
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
-        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-        nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+        "au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+        "nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
 
     " SnipMate {
@@ -402,7 +402,7 @@
      " }
 
      " Session List {
-        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+        "set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         nmap <leader>sl :SessionList<CR>
         nmap <leader>ss :SessionSave<CR>
      " }
@@ -491,7 +491,7 @@
         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
         " Enable heavy omni completion.
         if !exists('g:neocomplcache_omni_patterns')
