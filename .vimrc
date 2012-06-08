@@ -518,9 +518,9 @@
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-        "set guioptions-=T           " remove the toolbar
+        set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
-        set guifont=Inconsolata\ Medium\ 12,Consolas:h10
+        set guifont=Andale\ Mono\:h14,Consolas:h10
         if has('gui_macvim')
             set transparency=5          " Make the window slightly transparent
         endif
