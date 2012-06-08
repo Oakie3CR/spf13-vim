@@ -65,6 +65,7 @@
 
     " General
         if count(g:spf13_bundle_groups, 'general')
+            Bundle 'scrooloose/nerdtree'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'tpope/vim-surround'
             Bundle 'AutoClose'
@@ -74,6 +75,7 @@
             Bundle 'Lokaltog/vim-powerline'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'godlygeek/csapprox'
+            Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'corntrace/bufexplorer'
         endif
 
@@ -364,7 +366,7 @@
 
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        let NERDTreeChDirMode=0
+        let NERDTreeChDirMode=2
         let NERDTreeQuitOnOpen=1
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
