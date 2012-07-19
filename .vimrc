@@ -373,7 +373,7 @@
     " }
 
     " Tabularize {
-        if exists(":Tabularize")
+        "if exists(":Tabularize")
           nmap <Leader>a= :Tabularize /=<CR>
           vmap <Leader>a= :Tabularize /=<CR>
           nmap <Leader>a: :Tabularize /:<CR>
@@ -400,7 +400,7 @@
               endif
           endfunction
 
-        endif
+        "endif
      " }
 
      " Session List {
