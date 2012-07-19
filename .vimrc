@@ -75,7 +75,7 @@
             Bundle 'Lokaltog/vim-powerline'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'godlygeek/csapprox'
-            Bundle 'jistr/vim-nerdtree-tabs'
+            "Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'corntrace/bufexplorer'
         endif
 
@@ -360,7 +360,7 @@
     " }
 
     " NerdTree {
-        map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        map <C-e> :NERDTreeToggle<CR>
         map <leader>e :NERDTreeFind<CR>
         nmap <leader>nt :NERDTreeFind<CR>
 
