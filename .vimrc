@@ -134,7 +134,7 @@
 
     " Misc
         if count(g:spf13_bundle_groups, 'misc')
-            Bundle 'spf13/vim-markdown'
+            Bundle 'tpope/vim-markdown'
             Bundle 'spf13/vim-preview'
             Bundle 'tpope/vim-cucumber'
             Bundle 'Puppet-Syntax-Highlighting'
